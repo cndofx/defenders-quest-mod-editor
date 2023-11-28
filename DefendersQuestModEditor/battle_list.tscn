@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dmsvlp7api15o"]
+
+[node name="BattleList" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="NewBattleButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Battle"
+
+[node name="LoadBattleButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Battle"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+auto_height = true
+item_count = 3
+item_0/text = "battle1"
+item_1/text = "battle2"
+item_2/text = "battle3"

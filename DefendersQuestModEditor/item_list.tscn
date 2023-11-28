@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://v0g7rtiovm6h"]
+
+[node name="ItemList" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="NewItemButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Item"
+
+[node name="LoadItemButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Item"
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+auto_height = true
+item_count = 3
+item_0/text = "item1"
+item_1/text = "item2"
+item_2/text = "item3"

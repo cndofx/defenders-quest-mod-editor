@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://bil006ciq38vs"]
+[gd_scene load_steps=6 format=3 uid="uid://bil006ciq38vs"]
+
+[ext_resource type="Theme" uid="uid://dn5c2kyxb1ix6" path="res://theme.tres" id="1_6m7wq"]
+[ext_resource type="Script" path="res://main.gd" id="2_3limp"]
+[ext_resource type="PackedScene" uid="uid://v0g7rtiovm6h" path="res://item_list.tscn" id="2_u4vda"]
+[ext_resource type="PackedScene" uid="uid://dmsvlp7api15o" path="res://battle_list.tscn" id="3_eo35m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kq7qd"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,23 +14,137 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6m7wq")
+script = ExtResource("2_3limp")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Menubar" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 layout_mode = 2
-text = "Current Project: projectname"
+size_flags_vertical = 0
 
-[node name="LoadProjectButton" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ProjectMenuButton" type="MenuButton" parent="VBoxContainer/PanelContainer/Menubar"]
 layout_mode = 2
-text = "Load Project"
+size_flags_vertical = 0
+text = "Project"
+item_count = 2
+popup/item_0/text = "New Project"
+popup/item_0/id = 0
+popup/item_1/text = "Load Project"
+popup/item_1/id = 1
 
-[node name="NewProjectButton" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="DirectoryMenuButton" type="MenuButton" parent="VBoxContainer/PanelContainer/Menubar"]
 layout_mode = 2
-text = "New Project"
+text = "Directory"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/PanelContainer/Menubar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CurrentProjectLabel" type="Label" parent="VBoxContainer/PanelContainer/Menubar"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Current Project: projectid"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/PanelContainer/Menubar"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 10
+
+[node name="SplitContainer" type="SplitContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="VBoxContainer/MarginContainer/SplitContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ItemBattleRow" type="HBoxContainer" parent="VBoxContainer/MarginContainer/SplitContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemList" parent="VBoxContainer/MarginContainer/SplitContainer/LeftPanel/ItemBattleRow" instance=ExtResource("2_u4vda")]
+layout_mode = 2
+
+[node name="BattleList" parent="VBoxContainer/MarginContainer/SplitContainer/LeftPanel/ItemBattleRow" instance=ExtResource("3_eo35m")]
+layout_mode = 2
+
+[node name="RightPanel" type="TabContainer" parent="VBoxContainer/MarginContainer/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Main" type="MarginContainer" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main"]
+layout_mode = 2
+columns = 2
+
+[node name="ProjectIconImage" type="TextureRect" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = SubResource("CanvasTexture_kq7qd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ChangeProjectIconButton" type="Button" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Change Icon"
+
+[node name="ProjectIDLabel" type="Label" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+text = "Project ID:"
+
+[node name="ProjectIDEdit" type="LineEdit" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectNameLabel" type="Label" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+text = "Project Name:"
+
+[node name="ProjectNameEdit" type="LineEdit" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProjectDescriptionLabel" type="Label" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Description:"
+
+[node name="ProjectDescriptionEdit" type="TextEdit" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Hello" type="Label" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel"]
+visible = false
+layout_mode = 2
+text = "Hello"
+
+[node name="OpenImageDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open a File"
+initial_position = 2
+size = Vector2i(942, 400)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer/ChangeProjectIconButton" to="." method="_on_change_project_icon_button_pressed"]
+[connection signal="file_selected" from="OpenImageDialog" to="." method="_on_open_image_dialog_file_selected"]
