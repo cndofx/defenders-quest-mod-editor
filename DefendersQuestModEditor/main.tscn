@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bil006ciq38vs"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current Project: projectname"
+
+[node name="LoadProjectButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Load Project"
+
+[node name="NewProjectButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "New Project"
