@@ -45,6 +45,11 @@ popup/item_1/id = 1
 [node name="DirectoryMenuButton" type="MenuButton" parent="VBoxContainer/PanelContainer/Menubar"]
 layout_mode = 2
 text = "Directory"
+item_count = 2
+popup/item_0/text = "Set Game Directory"
+popup/item_0/id = 0
+popup/item_1/text = "Set Mods Directory"
+popup/item_1/id = 1
 
 [node name="Spacer" type="Control" parent="VBoxContainer/PanelContainer/Menubar"]
 layout_mode = 2
@@ -70,7 +75,6 @@ layout_mode = 2
 [node name="LeftPanel" type="VBoxContainer" parent="VBoxContainer/MarginContainer/SplitContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_vertical = 0
 
 [node name="ItemBattleRow" type="HBoxContainer" parent="VBoxContainer/MarginContainer/SplitContainer/LeftPanel"]
 layout_mode = 2
@@ -131,11 +135,6 @@ text = "Description:"
 [node name="ProjectDescriptionEdit" type="TextEdit" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel/Main/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Hello" type="Label" parent="VBoxContainer/MarginContainer/SplitContainer/RightPanel"]
-visible = false
-layout_mode = 2
-text = "Hello"
 
 [node name="OpenImageDialog" type="FileDialog" parent="."]
 unique_name_in_owner = true

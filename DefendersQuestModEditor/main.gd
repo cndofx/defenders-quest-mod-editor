@@ -12,4 +12,3 @@ func _on_open_image_dialog_file_selected(path: String) -> void:
 	var image = Image.load_from_file(path)
 	var texture = ImageTexture.create_from_image(image)
 	project_icon_image.texture = texture
-	print("image set")
